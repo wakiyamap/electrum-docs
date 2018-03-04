@@ -131,8 +131,7 @@ If you have made a transaction that is unconfirmed, you can:
    the unsigned transaction. Click on "Sign" and then "Broadcast".
    
  - トランザクション手数料を増やす。これは「置き換え可能な(replaceable)」トランザクションでのみ可能です。このタイプのトランザクションを作成するには、
-   トランザクションを送信する前に、[送信]タブで[交換可能]をチェックしておく必要があります。
-
+   トランザクションを送信する前に、[send]タブで[Replaceable]をチェックしておく必要があります。[send]タブの[Replaceable]オプションが表示されない場合は、[Tool]メニュー> [Preference]> [Fee]タブに移動し、[Propose Replace-By-Fee]を[Always]に設定します。置き換え可能なトランザクションの場合、historyタブの日付列に「Replaceable」と表示されます。交換可能な取引の手数料を増額するには、[history]タブのエントリを右クリックし、「Increase Fee」を選択します。適切な料金を設定し、「OK」をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「Sign」をクリックして「Broadcast」をクリックします。
 
  - Create a "Child Pays for Parent" transaction. A CPFP is a new
    transaction that pays a high fee in order to compensate for the
@@ -143,14 +142,20 @@ If you have made a transaction that is unconfirmed, you can:
    "Child pays for parent". Set an appropriate fee and click on "OK". 
    A window will popup with the unsigned transaction. Click on "Sign"
    and then "Broadcast".
+   
+ - 「親のための子どもの支払い(Child Pays for Parent)」トランザクションの作成をする。CPFPはその親であるトランザクションのわずかな手数料を補うために高い手数料を支払おうとする新しいトランザクションです。これは資金の受領者によってのみ、またはトランザクションがお釣りアウトプットを場合に送信者が行うことができます。CPFPトランザクションを作成するには、[history]タブの未承認のトランザクションを右クリックし[Child pays for parent]を選択します。適切な手数料を設定したら[OK]をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「Sign」をクリックして「Broadcast」をクリックします。
 
 
 What does it mean to "freeze" an address in Electrum?
 -----------------------------------------------------
+Electrumのアドレスを「フリーズ」するとはどういう意味ですか？
+-------------------------------------------------------
 
 When you freeze an address, the funds in that address will not be used
 for sending bitcoins. You cannot send bitcoins if you don't have
 enough funds in the non-frozen addresses.
+
+アドレスをフリーズすると、そのアドレスの資金はMonacoinの送信に使用されません。フリーズされていないアドレスに十分な資金がない場合、Monacoinは送信できません。
 
 
 How is the wallet encrypted?
