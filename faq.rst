@@ -259,6 +259,7 @@ Where is my wallet file located?
 The default wallet file is called default_wallet, which is created when
 you first run the application and is located in the /wallets folder.
 
+デフォルトのWalletファイルはdefault_walletと呼ばれ、アプリケーションを最初に実行したときに作成され、/walletsフォルダに格納されています。
 
 
 On Windows:
@@ -266,40 +267,70 @@ On Windows:
  - Show hidden files
  - Go to \\Users\\YourUserName\\AppData\\Roaming\\Electrum\\wallets (or %APPDATA%\\Electrum\\wallets)
 
+Windowsの場合：
+
+ - 隠しファイルを表示する
+ - \\Users\\YourUserName\\AppData\\Roaming\\Electrum\\wallets（または％APPDATA％\\Electrum\\wallets）に移動
+
 On Mac:
 
 - Open Finder
 - Go to folder (shift+cmd+G) and type ~/.electrum
+
+Macの場合：
+
+- Finderを開く
+- フォルダに移動し（shift + cmd + G）、~/.electrumと入力
 
 On Linux:
 
 - Home Folder
 - Go -> Location and type ~/.electrum
 
+Linuxの場合
+
+- Homeフォルダ
+- ロケーションに移動して ~/.electrumと入力
+
 
 Can I do bulk payments with Electrum?
 -------------------------------------
+Electrumで一括支払いができますか？
+-------------------------------
 
 You can create a transaction with several outputs. In the GUI, type
 each address and amount on a line, separated by a comma.
+
+複数の出力を持つトランザクションを作成することができます。GUIでは各アドレスとその送信額を1行に、カンマで区切ることで入力します。
 
 .. image:: png/paytomany.png
 
 Amounts are in the current unit set in the client. The
 total is shown in the GUI.
 
+金額(Amount)は現在クライアントに設定されている単位で指定します。合計がGUIに表示されます。
+
 You can also import a CSV file in the "Pay to" field, by clicking on
 the folder icon.
+
+また、フォルダアイコンをクリックして[支払(Pay to)]フィールドにCSVファイルをインポートすることもできます。
 
 
 Can Electrum create and sign raw transactions?
 ----------------------------------------------
+Electrumは生のトランザクションを作成して署名することはできますか？
+------------------------------------------------------------
 
 Electrum lets you create and sign raw transactions right from the user
 interface using a form.
 
+Electrumでは、フォームを使用してユーザーインターフェイスから生のトランザクションを作成し署名することができます。
+
 Electrum freezes when I try to send bitcoins.
 --------------------------------------------
+Monacoinを送信しようとするとElectrumがフリーズします。
+-------------------------------------------------
+
 
 This might happen if you are trying to spend a large number of
 transaction outputs (for example, if you have collected hundreds of
@@ -308,15 +339,23 @@ looks for unspent coins that are in your wallet in order to create a
 new transaction. Unspent coins can have different values, much like
 physical coins and bills.
 
+これは多数のトランザクションアウトプットを費やそうとしている場合（たとえばMonacoinのfaucetから数百もの寄付を集めた場合など）に発生する可能性があります。Monacoinを送信する際に、Electrumは新しいトランザクションを作成するためにウォレット内にある未使用のコインを探します。未使用のコインは、物理的な効果や紙幣と同じように異なった数値を持つことができます。
+
 If this happens, you should consolidate your transaction inputs by
 sending smaller amounts of bitcoins to one of your wallet addresses;
 this would be the equivalent of exchanging a stack of nickels for a
 dollar bill.
 
+このような場合は、ウォレットアドレスの1つに少量のMonacoinを送信してトランザクションインプットを統合する必要があります。これはたくさんの5セント硬貨のを1ドル紙幣と交換するのと同じです。
+
 .. _gap limit:
 
 What is the gap limit?
 ----------------------
+gap limitとは何ですか？
+---------------------
+
+gap limit
 
 The gap limit is the maximum number of consecutive unused addresses in
 your deterministic sequence of addresses. Electrum uses it in order
@@ -324,12 +363,17 @@ to stop looking for addresses. In Electrum 2.0, it is set to 20 by
 default, so the client will get all addresses until 20 unused
 addresses are found.
 
+gap limitとは決定性を持つ一連のアドレスのうち連続して使用されていないアドレスの最大数です。アドレスをどこまで検索したのち停止するかを決めるためにElectrumはこれを使用しています。Electrum 2.0では、デフォルトで20に設定されているので、クライアントは20の未使用アドレスが見つかるまですべてのアドレスを取得します。
 
 How can I pre-generate new addresses?
 -------------------------------------
+新しいアドレスを事前に生成するにはどうすればよいですか？
+--------------------------------------------------
 
 Electrum will generate new addresses as you use them,
 until it hits the `gap limit`_.
+
+Electrumは、あなたがgap limitに達するまで、新しいアドレスを生成してそれらを使用します。
 
 If you need to pre-generate more addresses, you can do so by typing
 wallet.create_new_address(False) in the console. This command will generate
@@ -337,15 +381,21 @@ one new address. Note that the address will be shown with a red
 background in the address tab to indicate that it is beyond the gap
 limit. The red color will remain until the gap is filled.
 
+さらに多くのアドレスを事前に生成する必要がある場合は、コンソールにwallet.create_new_address（False）と入力してアドレスを事前に生成することができます。このコマンドは新しいアドレスを1つ生成します。アドレスは、「アドレス(Address)」タブに赤い背景で表示され、gap limitを超えていることを表します。gapが埋まるまで赤色のままです。
+
 WARNING: Addresses beyond the gap limit will not automatically be
 recovered from the seed. To recover them will require either increasing
 the client's gap limit or generating new addresses until the used
 addresses are found.
 
+警告：gap limitを超えたアドレスは自動的にはシードから回復されません。回復するには、クライアントのgap limitを増やすか、使用されたアドレスが見つかるまで新しいアドレスを生成する必要があります。
+
 
 If you wish to generate more than one address, you can use a "for"
 loop. For example, if you wanted to generate 50 addresses, you could
 do this:
+
+複数のアドレスを生成する場合は"for"ループを使用できます。たとえば50個のアドレスを生成する場合には次のようにします。
 
 .. code-block:: python
 
