@@ -131,7 +131,7 @@ If you have made a transaction that is unconfirmed, you can:
    the unsigned transaction. Click on "Sign" and then "Broadcast".
    
  - トランザクション手数料を増やす。これは「置き換え可能な(replaceable)」トランザクションでのみ可能です。このタイプのトランザクションを作成するには、
-   トランザクションを送信する前に、[send]タブで[Replaceable]をチェックしておく必要があります。[send]タブの[Replaceable]オプションが表示されない場合は、[Tool]メニュー> [Preference]> [Fee]タブに移動し、[Propose Replace-By-Fee]を[Always]に設定します。置き換え可能なトランザクションの場合、historyタブの日付列に「Replaceable」と表示されます。交換可能な取引の手数料を増額するには、[history]タブのエントリを右クリックし、「Increase Fee」を選択します。適切な料金を設定し、「OK」をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「Sign」をクリックして「Broadcast」をクリックします。
+   トランザクションを送信する前に、[送信(send)]タブで[Replaceable]をチェックしておく必要があります。[send]タブの[Replaceable]オプションが表示されない場合は、[ツール(Tool)]メニュー> [設定(Preference)] > [手数料(Fee)]タブに移動し、[Propose Replace-By-Fee]を[Always]に設定します。置き換え可能なトランザクションの場合、historyタブの日付列に「Replaceable」と表示されます。交換可能な取引の手数料を増額するには、[履歴(history)]タブのエントリを右クリックし、「手数料を増やす(Increase Fee)」を選択します。適切な料金を設定し、「OK」をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「署名(Sign)」をクリックして「発信(Broadcast)」をクリックします。
 
  - Create a "Child Pays for Parent" transaction. A CPFP is a new
    transaction that pays a high fee in order to compensate for the
@@ -143,7 +143,7 @@ If you have made a transaction that is unconfirmed, you can:
    A window will popup with the unsigned transaction. Click on "Sign"
    and then "Broadcast".
    
- - 「親のための子どもの支払い(Child Pays for Parent)」トランザクションの作成をする。CPFPはその親であるトランザクションのわずかな手数料を補うために高い手数料を支払おうとする新しいトランザクションです。これは資金の受領者によってのみ、またはトランザクションがお釣りアウトプットを場合に送信者が行うことができます。CPFPトランザクションを作成するには、[history]タブの未承認のトランザクションを右クリックし[Child pays for parent]を選択します。適切な手数料を設定したら[OK]をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「Sign」をクリックして「Broadcast」をクリックします。
+ - 「親のための子どもの支払い(Child Pays for Parent)」トランザクションの作成をする。CPFPはその親であるトランザクションのわずかな手数料を補うために高い手数料を支払おうとする新しいトランザクションです。これは資金の受領者によってのみ、またはトランザクションがお釣りアウトプットを場合に送信者が行うことができます。CPFPトランザクションを作成するには、[履歴(history)]タブの未承認のトランザクションを右クリックし[Child pays for parent]を選択します。適切な手数料を設定したら[OK]をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「署名(Sign)」をクリックして「発信(Broadcast)」をクリックします。
 
 
 What does it mean to "freeze" an address in Electrum?
@@ -160,14 +160,20 @@ enough funds in the non-frozen addresses.
 
 How is the wallet encrypted?
 ----------------------------
+ウォレットはどのように暗号化されていますか？
+----------------------------------------
 
 Electrum uses two separate levels of encryption:
+
+Electrumは、別々の2つのレベルの暗号化を使用しています。
 
  - Your seed and private keys are encrypted using AES-256-CBC. The
    private keys are decrypted only briefly, when you need to sign a
    transaction; for this you need to enter your password. This is done
    in order to minimize the amount of time during which sensitive
    information is unencrypted in your computer's memory.
+
+ - シードと秘密鍵はAES-256-CBCを使用して暗号化されます。秘密鍵は、トランザクションに署名する必要がある短かい間だけ復号されます。このためにはあなたはパスワードを入力する必要があります。これは、保護が必要な情報がコンピュータのメモリ内で暗号化されていない時間を最小限に抑えるために行われます。
 
  - In addition, your wallet file may be encrypted on disk. Note that
    the wallet information will remain unencrypted in the memory of
@@ -176,29 +182,43 @@ Electrum uses two separate levels of encryption:
    it. Note that the password will not be kept in memory; Electrum
    does not need it in order to save the wallet on disk, because it
    uses asymmetric encryption (ECIES).
+   
+ - さらに、ウォレットファイルはWalletファイルはディスク上で暗号化されている可能性があります。暗号化されている場合は、ウォレットを開くためにパスワードを求められます。パスワードはメモリには保持されません。Electrumは非対称暗号化（ECIES）をしているため、ウォレットをディスクに保存する際にパスワードは必要ありません。
 
 Wallet file encryption is activated by default since version 2.8. It
 is intended to protect your privacy, but also to prevent you from
 requesting bitcoins on a wallet that you do not control.
 
+ウォレットファイルの暗号化は、バージョン2.8以降ではデフォルトで有効になっています。これはあなたのプライバシーを保護することを目的としていますが、あなたが管理していないウォレットにおいてMonacoinを請求できないようにするためでもあります。
+
 
 Does Electrum support cold wallets?
 -----------------------------------
+Electrumはコールドウォレットをサポートしていますか？
+------------------------------------------------
 
 Yes, see :ref:`Cold Storage <coldstorage>`.
+
+はい、ref： `Cold Storage <coldstorage>`を参照してください。
 
 
 Can I import private keys from other Bitcoin clients?
 -----------------------------------------------------
+他のMonacoinクライアントから秘密鍵をインポートできますか？
+----------------------------------------------------
 
 In Electrum 2.0, you cannot import private keys in a wallet that has a
 seed. You should sweep them instead.
+
+Electrum 2.0では、シードを持つウォレット内に秘密鍵をインポートすることはできません。代わりにそれらをスイープするしなくてはなりません。
 
 If you want to import private keys and not sweep them, you need to
 create a special wallet that does not have a seed.  For this, create a
 new wallet, select "restore", and instead of typing your seed, type a
 list of private keys, or a list of addresses if you want to create a
 watching-only wallet.
+
+秘密鍵をスイープせずにインポートしたい場合は、シードを持たない特別なウォレットを作成する必要があります。このためには、新しいウォレットを作成し「復元(restore)」を選択し、シードを入力するか、秘密鍵のリストを入力するか、閲覧専用ウォレットを作成する場合はアドレスのリストを入力します。
 
 
 .. image:: png/import_addresses.png
@@ -207,15 +227,20 @@ watching-only wallet.
 You will need to back up this wallet, because it cannot be
 recovered from a seed.
 
+このウォレットはシードから復元できないため、バックアップする必要があります。
+
 Can I sweep private keys from other Bitcoin clients?
 ----------------------------------------------------
-
+他のMonacoinクライアントから秘密鍵をスイープすることはできますか？
+------------------------------------------------------------
 
 Sweeping private keys means to send all the bitcoins they control to
 an existing address in your wallet. The private keys you sweep do not
 become a part of your wallet.  Instead, all the bitcoins they control
 are sent to an address that has been deterministically generated from
 your wallet seed.
+
+秘密鍵のスイープとは、その秘密鍵が管理しているすべてのMonacoinをあなたのウォレットの既存アドレス宛に送信することを意味します。スイープする秘密鍵はウォレットの一部にはなりません。代わりに、その秘密鍵が管理しているすべてのMonacoinはあなたのウォレットのシードから確定的に生成されたアドレスに対して送信されます。
 
 To sweep private keys, go to the Wallet menu -> Private Keys ->
 Sweep. Enter the private keys in the appropriate field. Leave the
@@ -224,11 +249,17 @@ be from your existing electrum wallet. Click on "Sweep". It'll now take
 you to the send tab where you can set an appropriate fee and then click
 on "Send" to send the coins to your wallet.
 
+秘密鍵をスイープするには、「ウォレット(wallet)」メニュー -> 「秘密鍵(Private Key)」 -> 「スイープ(Sweep)」に移動します。適切なフィールドに秘密鍵を入力します。「アドレス(Address)」フィールドは変更しないでください。それは宛先アドレスであり、あなたの既存のelectrumウォレットから選ばれています。「スイープ(Sweep」をクリックします。「送信(send)」タブに移動するので適切な手数料を設定したらコインをウォレットに送信するために「送信(Send)」をクリックします。
+
 Where is my wallet file located?
 --------------------------------
+ウォレットファイルはどこにありますか？
+----------------------------------
 
 The default wallet file is called default_wallet, which is created when
 you first run the application and is located in the /wallets folder.
+
+
 
 On Windows:
 
