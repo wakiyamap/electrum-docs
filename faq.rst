@@ -6,7 +6,7 @@ Frequently Asked Questions
 
 How does Electrum work?
 -----------------------
-Electrumはどのように動くの？
+Electrumはどのように動作しますか？
 -----------------------
 
 Electrum's focus is speed, with low resource usage and
@@ -14,20 +14,29 @@ simplifying Bitcoin. Startup times are instant because it
 operates in conjunction with high-performance servers that
 handle the most complicated parts of the Bitcoin system.
 
-Electrumが焦点にあてているのはスピード、計算資源の使用量を少なくする、Monacoinを簡単にすることです。Monacoinのシステムの最も複雑な部分は高性能なサーバーが操作し、Electrumはこれに接続して動作するので起動時間はわずかです。
+Electrumが焦点にあてているのはスピード、少ない計算資源の使用量、Monacoinを簡単にすることです。Monacoinのシステムの最も複雑な部分は高性能なサーバーが操作し、Electrumはこれと連携して動作するので起動時間はわずかです。
 
 Does Electrum trust servers?
 ----------------------------
+Electrumはサーバーを信頼していますか？
+---------------------------------
 
 Not really; the Electrum client never sends private keys
 to the servers. In addition, it verifies the information
 reported by servers, using a technique called :ref:`Simple Payment Verification <spv>`
 
+そうでもないです;Electrumクライアントは秘密鍵をサーバーに送信しません。さらに、サーバーから受け取った情報は
+Simple Payment Verification=SPVと呼ばれる技術で検証されます。
+
 What is the seed?
+-----------------
+シードとは何ですか？
 -----------------
 
 The seed is a random phrase that is used to generate your private
 keys.
+
+シードは秘密鍵を生成するために使用されるランダムなフレーズです。
 
 Example:
 
@@ -38,16 +47,32 @@ Example:
 Your wallet can be entirely recovered from its seed. For this, select
 the "restore wallet" option in the startup.
 
+例：
+
+.. code-block:: none
+
+   slim sugar lizard predict state cute awkward asset inform blood civil sugar
+   
+あなたのウォレットはシードから完全に復元することができます。そのためには、起動時に「restore wallet」オプションを選択してください。
+
+
 How secure is the seed?
 -----------------------
+シードはどれくらい安全ですか？
+-----------------------
+
 
 The seed phrase created by Electrum has 132 bits of entropy. This
 means that it provides the same level of security as a Bitcoin private
 key (of length 256 bits). Indeed, an elliptic curve key of length n
 provides n/2 bits of security.
 
+Electrumによって作成されたシードフレーズは132bitのエントロピーを持ちます。つまり、Monacoinの秘密鍵（長さ256bit）と同じレベルの
+セキュリティを提供します。実際、長さnの楕円曲線キーは、n / 2bitのセキュリティを提供します。
 
 I have forgotten my password. What can I do?
+--------------------------------------------
+パスワードを忘れてしまいました。何ができるでしょう。
 --------------------------------------------
 
 It is not possible to recover your password. However, you can restore
@@ -56,27 +81,42 @@ If you lose both your password and your seed, there is no way
 to recover your money. This is why we ask you to save your seed
 phrase on paper.
 
+パスワードを復元することはできません。ただし、シードフレーズからウォレットを復元し、新しいパスワードを選ぶことができます。
+パスワードとシードの両方がわからなくなった場合、あなたの資金を取り戻す方法はありません。これがシードフレーズを紙に書き留めるように頼む理由です。
+
 To restore your wallet from its seed phrase, create a new wallet, select
 the type, choose "I already have a seed" and proceed to input your seed
 phrase.
 
+シードフレーズからウォレットを復元するには、create a new walletを選んだのち、「I already have a seed」を選択してシードフレーズを入力してください。
+
 
 My transaction has been unconfirmed for a long time. What can I do?
 -------------------------------------------------------------------
+私のトランザクションが長い間承認されていません。何ができますか？
+----------------------------------------------------------
 
 Bitcoin transactions become "confirmed" when miners accept to write
 them in the Bitcoin blockchain. In general, the speed of confirmation
 depends on the fee you attach to your transaction; miners prioritize
 transactions that pay the highest fees.
 
+Monacoinトランザクションはマイナーがブロックチェーンに対してその書き込みを許可した時に「承認」されます。一般に承認スピードはあなたがトランザクションに添付した手数料に依存します。マイナーは最も高い手数料を支払うトランザクションを優先します。
+
 Recent versions of Electrum use "dynamic fees" in order to make sure
 that the fee you pay with your transaction is adequate. This feature
 is enabled by default in recent versions of Electrum.
 
+Electrumの最近のバージョンでは、トランザクションに支払う手数料を十分にするために「ダイナミックフィー」を使用しています。この機能はElectrumの最近のバージョンではあらかじめ有効になっています。
+
 If you have made a transaction that is unconfirmed, you can:
+
+未承認のトランザクションを作成してしまった場合、次の操作を実行できます。：
 
  - Wait for a long time. Eventually, your transaction will either be
    confirmed or cancelled. This might take several days.
+   
+ - しばらく待つ。最終的にはあなたのトランザクションは承認されるかキャンセルされます。これには数日かかることがあります。
 
  - Increase the transaction fee. This is only possible for
    "replaceable" transactions. To create this type of transaction, 
@@ -89,6 +129,9 @@ If you have made a transaction that is unconfirmed, you can:
    click on its entry on the history tab and choose "Increase Fee". 
    Set an appropriate fee and click on "OK". A window will popup with 
    the unsigned transaction. Click on "Sign" and then "Broadcast".
+   
+ - トランザクション手数料を増やす。これは「置き換え可能な(replaceable)」トランザクションでのみ可能です。このタイプのトランザクションを作成するには、
+   トランザクションを送信する前に、[送信]タブで[交換可能]をチェックしておく必要があります。
 
 
  - Create a "Child Pays for Parent" transaction. A CPFP is a new
