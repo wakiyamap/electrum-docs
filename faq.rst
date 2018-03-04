@@ -130,8 +130,7 @@ If you have made a transaction that is unconfirmed, you can:
    Set an appropriate fee and click on "OK". A window will popup with 
    the unsigned transaction. Click on "Sign" and then "Broadcast".
    
- - トランザクション手数料を増やす。これは「置き換え可能な(replaceable)」トランザクションでのみ可能です。このタイプのトランザクションを作成するには、
-   トランザクションを送信する前に、[送信(send)]タブで[Replaceable]をチェックしておく必要があります。[send]タブの[Replaceable]オプションが表示されない場合は、[ツール(Tool)]メニュー> [設定(Preference)] > [手数料(Fee)]タブに移動し、[Propose Replace-By-Fee]を[Always]に設定します。置き換え可能なトランザクションの場合、historyタブの日付列に「Replaceable」と表示されます。交換可能な取引の手数料を増額するには、[履歴(history)]タブのエントリを右クリックし、「手数料を増やす(Increase Fee)」を選択します。適切な料金を設定し、「OK」をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「署名(Sign)」をクリックして「発信(Broadcast)」をクリックします。
+ - トランザクション手数料を増やす。これは「置き換え可能な(replaceable)」トランザクションでのみ可能です。このタイプのトランザクションを作成するには、トランザクションを送信する前に、[送信(send)]タブで[Replaceable]をチェックしておく必要があります。[send]タブの[Replaceable]オプションが表示されない場合は、[ツール(Tool)]メニュー> [設定(Preference)] > [手数料(Fee)]タブに移動し、[Propose Replace-By-Fee]を[Always]に設定します。置き換え可能なトランザクションの場合、historyタブの日付列に「Replaceable」と表示されます。交換可能な取引の手数料を増額するには、[履歴(history)]タブのエントリを右クリックし、「手数料を増やす(Increase Fee)」を選択します。適切な料金を設定し、「OK」をクリックします。未署名のトランザクションがウィンドウにポップアップ表示されます。「署名(Sign)」をクリックして「発信(Broadcast)」をクリックします。
 
  - Create a "Child Pays for Parent" transaction. A CPFP is a new
    transaction that pays a high fee in order to compensate for the
