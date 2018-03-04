@@ -82,7 +82,7 @@ to recover your money. This is why we ask you to save your seed
 phrase on paper.
 
 パスワードを復元することはできません。ただし、シードフレーズからウォレットを復元し、新しいパスワードを選ぶことができます。
-パスワードとシードの両方がわからなくなった場合、あなたの資金を取り戻す方法はありません。これがシードフレーズを紙に書き留めるように頼む理由です。
+パスワードとシードの両方がわからなくなった場合、あなたの資金を取り戻す方法はありません。これがシードフレーズを紙に書き留めるようにお願いする理由です。
 
 To restore your wallet from its seed phrase, create a new wallet, select
 the type, choose "I already have a seed" and proceed to input your seed
