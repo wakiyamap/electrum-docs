@@ -405,43 +405,62 @@ do this:
 
 How do I upgrade Electrum?
 --------------------------
+Electrumをアップグレードするには？
+-------------------------------
 
 Warning: always save your wallet seed on paper before
 doing an upgrade.
 
+警告：警告：アップグレードを実行する前に、必ず紙にウォレットのシードを保存してください。
+
 To upgrade Electrum, just install the most recent version.
 The way to do this will depend on your OS.
+
+Electrumをアップグレードするには、単に最新バージョンをインストールするだけです。方法はお使いのOSによって異なります。
 
 Note that your wallet files are stored separately from the
 software, so you can safely remove the old version of the
 software if your OS does not do it for you.
 
+ウォレットファイルはソフトウェアとは別に保管されるため、OSが行わない場合には自分自身でソフトウェアの古いバージョンを安全に削除できます。
+
 Some Electrum upgrades will modify the format of your
 wallet files.
+
+一部のElectrumアップグレードでは、ウォレットファイルの形式が変更されます。
 
 For this reason, it is not recommended to downgrade
 Electrum to an older version once you have opened your
 wallet file with the new version. The older version will
 not always be able to read the new wallet file.
 
+このため、一度新しいバージョンでウォレットファイルを開いてからElectrumを古いバージョンにダウングレードすることはお勧めしません。古いバージョンでは新しいウォレットファイルを常に読み取ることができるとは限りません。
 
 The following issues should be considered when upgrading
 Electrum 1.x wallets to Electrum 2.x:
+
+Electrum 1.xのWalletをElectrum 2.xにアップグレードするときは、次の点を考慮する必要があります。
 
 - Electrum 2.x will need to regenerate all of your
   addresses during the upgrade process. Please allow it
   time to complete, and expect it to take a little longer
   than usual for Electrum to be ready.
+  
+- Electrum 2.xでは、アップグレード処理中にすべてのアドレスを再生成する必要があります。Electrumが準備完了するまで待ってください。またその際には通常より少し多く時間がかかると考えてください。
 
 - The contents of your wallet file will be replaced with
   an Electrum 2 wallet. This means Electrum 1.x will no
   longer be able to use your wallet once the upgrade is
   complete.
+  
+- ウォレットファイルの中身はElectrum2ウォレットに置き換えられます。これは一度アップグレードが完了すると、Electrum 1.xはウォレットを使用できなくなることを意味します。
 
 - The "Addresses" tab will not show any addresses the
   first time you launch Electrum 2. This is expected
   behavior. Restart Electrum 2 after the upgrade is
   complete and your addresses will be available.
+  
+- 始めてElectrum2を起動したときは「アドレス(Addresses)」タブにはアドレスは表示されません。これは想定された動作です。アップグレードが完了したらElectrum2を再起動してください。そうすればアドレスは利用可能になります。
 
 - Offline copies of Electrum will not show the
   addresses at all because it cannot synchronize with
@@ -450,3 +469,5 @@ Electrum 1.x wallets to Electrum 2.x:
   Console: wallet.synchronize(). When it's complete,
   restart Electrum and your addresses will once again
   be available.
+
+- Electrumのオフラインコピーには、ネットワークと同期できないためアドレスはまったく表示されません。コンソールに次のように入力すると、少数のアドレスをオフライン生成するように強制できます。：wallet.synchronize()　完了したらElectrumを再起動してください、するとあなたのアドレスが再び利用可能になります。
