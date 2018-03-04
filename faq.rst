@@ -9,10 +9,10 @@ How does Electrum work?
 Electrumはどのように動くの？
 -----------------------
 
-| Electrum's focus is speed, with low resource usage and
+Electrum's focus is speed, with low resource usage and
 simplifying Bitcoin. Startup times are instant because it
 operates in conjunction with high-performance servers that
-handle the most complicated parts of the Bitcoin system.
+| handle the most complicated parts of the Bitcoin system.
 | Electrumが焦点にあてているのはスピード、計算資源の使用量を少なくする、Monacoinを簡単にすることです。Monacoinのシステムの最も複雑な部分は高性能なサーバーが操作し、Electrumはこれに接続して動作するので起動時間はわずかです。
 
 Does Electrum trust servers?
