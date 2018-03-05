@@ -110,30 +110,46 @@ For this you have multiple options:
 
 Transfer a file
 ```````````````
+ファイルを転送する
+````````````````
 
 You can save the partially signed transaction to a file (using the
 "save" button), transfer that to the machine where the second wallet
 is running (via usb stick, for example) and load it there (using Tools
 -> Load transaction -> from file)
 
+「保存(save)」ボタンを押して部分的に署名されたトランザクションをファイルに保存し、2番目のウォレットが実行されているマシンに（usbメモリ等を通して）転送したら、ファイルを読み込ませましょう。（ツール(Tools)->取引情報を読み込む(Load transasction)->ファイルから(form file)）
+
 Use QR-Code
 ```````````
+QRコードを使う
+`````````````
 
 There's also a button showing a qr-code icon. Clicking
 that will display a qr-code containing the transaction that
 can be scanned into the second wallet (Tools -> Load
 Transaction -> From QR Code)
 
+QRコードアイコンを表示するボタンもあります。これをクリックすると、2番目のウォレットにスキャンできるトランザクションが入ったQRコードが表示されます（「ツール(Tools)」->「取引情報を読み込む(Load transaction)」->「QRコードから(From QR code)」）
+
+
 Use the Cosigner Pool Plugin
 ````````````````````````````
+Cosiner Poolプラグインを使う
+``````````````````````````
 
 For this to work the Plugin "Cosigner Pool" needs to be
 enabled (Tools -> Plugins) with both wallets.
+
+この機能のためには、両方のウォレットでプラグイン"Cosigner Pool"を有効にする必要があります（ツール(Tools)->プラグイン(Plugin)）。
+
 
 Once the plugin is enabled, you will see a button labeled "Send to
 cosigner". Clicking it sends the partially signed transaction to a
 central server. Note that the transaction is encrypted with your
 cosigner's master public key.
+
+プラグインが有効になると「send to cosigner」というラベルの付いたボタンが表示されます。クリックすると部分的に署名されたトランザクションが中央サーバに送信されます。トランザクションはあなたの共同署名者のマスター公開鍵で暗号化されていることに注意してください。
 
 .. image:: png/Sent_to_Cosigner.png
 	    
@@ -141,12 +157,18 @@ When the cosigner wallet is started, it will get a
 notification that a partially signed transaction is
 available:
 
+共同署名者のウォレットが起動すると、部分的に署名されたトランザクションが使用可能であるという通知が表示されます。
+
 .. image:: png/Cosigner_Retrieve.png
 	    
 The transaction is encrypted with the cosigner's master
 public key; the password is needed to decrypt it.
 
+トランザクションは、共同署名者のマスター公開鍵で暗号化されているので復号するためにパスワードが必要です。
+
 With all of the above methods, you can now add the seconds
 signature the the transaction (using the "sign" button). It
 will then be broadcast to the network.
+
+上記の順序を全て経ると、「署名」ボタンを押すことで2つめの署名をトランザクションに追加できるようになりました。その後、トランザクションはネットワークにブロードキャストされます。
 
