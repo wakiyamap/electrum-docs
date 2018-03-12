@@ -1,27 +1,43 @@
 How to accept Bitcoin on a website using Electrum
 =================================================
+Electrumを使ったWEbサイト上でのMonacoinの受け取り方
+================================================
 
 This tutorial will show you how to accept Bitcoin on a website with
 SSL signed payment requests. It is updated for Electrum 2.6.
 
+このチュートリアルではSSL化された支払いリクエストを使ってWebサイト上でMonacoinを受け取る方法を説明しています。Electrum2.6.で更新されています。
 
 Requirements
 ------------
+要件
+----
 
 - A webserver serving static HTML
 - A SSL certificate (signed by a CA)
 - Electrum version >= 2.6
 
+- static HTMLを提供するWebサーバ
+- SSL証明書（CA(認証局)による署名）
+- バージョン2.6以上のElectrum
+
+
 Create and use your merchant wallet
----------------
+商業用のウォレットを作成、使用する
+-----------------------------
+
 
 Create a wallet on your protected machine, as you want to keep your
 cryptocurrency safe. If anybody compromise your merchant server, s/he will be able
 to access read-only version of your wallet only and won't be able to spent currency.
 
+暗号通貨を安全に保存しておきたい場合は、保護されたマシン上にウォレットを作成してください。もしあなたの商業用サーバに誰かが侵入した場合、彼又は彼女は読み取り専用のウォレットにアクセスすることができるだけでコインを使用することはできません。
+
 Please notice that the potential intruder still will be able to see your
 addresses, transactions and balance, though. It's also recommended to use a
 separate wallet for your merchant purposes (and not your main wallet).
+
+しかし内部に隠れた侵入者は依然としてあなたのアドレス、取引、残高を監視することができます。商業目的には（あなたのメインウォレットではなく）分けたウォレットを使用することが推奨されています。
 
 .. code-block:: bash
 
@@ -29,20 +45,28 @@ separate wallet for your merchant purposes (and not your main wallet).
 
 Still being on a protected machine, export your Master Public Key (xpub):
 
+保護されたマシン上でマスター公開鍵(xpub)をエクスポートする：
+
 .. code-block:: bash
 
    electrum getmpk -w .electrum/wallets/your-wallet
 
 Now you are able to set up your electrum merchant daemon.
 
+これで商業用Electrumデーモンを設定することができるようになりました。
+
 On the server machine restore your wallet from previously exported Master
 Public Key (xpub):
+
+サーバマシン上で先ほどエクスポートしたマスター公開鍵(xpub)を復旧します。
 
 .. code-block:: bash
 
    electrum restore xpub...............................................
 
 Once your read-only wallet is (re-)created, start Electrum as a daemon:
+
+あなたの読み取り専用のウォレットを（再）復旧したらElectrumをデーモンとして起動します：
 
 .. code-block:: bash
 
