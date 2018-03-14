@@ -213,7 +213,7 @@ The page shows the payment request. You can open the
 bitcoin: URI with a wallet, or scan the QR code. The bottom
 line displays the time remaining until the request expires.
 
-このページには支払いリクエストが載っています。ウォレットでMonaocin: URI、またはQRコードをスキャン出来ます。最後の行
+このページには支払いリクエストが載っています。ウォレットでMonaocin: URIを開くか、QRコードをスキャンすることが出来ます。最後の行はリクエストの期限が切れるまでに残された時間を表しています。
 
 .. image:: png/payreq_window.png
           
