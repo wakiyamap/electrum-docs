@@ -1,15 +1,22 @@
 
 How to split your coins using Electrum in case of a fork
 ========================================================
+フォークが発生した場合のElectrumを用いたコインの分離方法
+===================================================
 
 Note:
+-----
+注意：
 -----
 
 This document has been updated for Electrum 2.9.
 
+この文書はElectrum2.9用に更新されています。
 
 What is a fork?
 ---------------
+フォークとは何ですか？
+-------------------
 
 A blockchain fork (or blockchain split) occurs when a deviating
 network begins to generate and maintain a conflicting chain of blocks
@@ -17,15 +24,23 @@ branching from the original, essentially creating another "version of
 bitcoin" or cryptocurrency, with its very own blockchain, set of
 rules, and market value.
 
+ブロックチェーンのフォーク（分岐）は、逸脱するネットワークがオリジナルのチェーンから枝分かれして競合するブロックのチェーンが生成、維持されると発生します。本質的にMonacoin（暗号通貨）の別のバージョンが生まれ、独自のブロックチェーン、ルールセット、市場価値を持ちます。
+
 If there is a fork of the Bitcoin blockchain, two distinct currencies
 will coexist, having different market values.
+
+Monacoinブロックチェーンのフォークが発生した場合、二つの別々の通貨が同時に存在し、異なる市場価値を持ちます。
 
 
 What does it mean to 'split your coins'?
 ----------------------------------------
+コインを分離するとはどういう意味ですか？
+------------------------------------
 
 An address on the original blockchain will now also contain the same
 amount on the new chain.
+
+オリジナルブロックチェーン上のアドレスには新しいチェーン上での同じ金額が含まれています。
 
 If you own Bitcoins before the fork, a transaction that spends these
 coins after the fork will, in general, be valid on both chains. This
@@ -33,14 +48,20 @@ means that you might be spending both coins simultaneously. This is
 called 'replay'. To prevent this, you need to move your coins using
 transactions that differ on both chains.
 
+フォーク以前にMonacoinを所持していた場合、フォーク後にこれらのコインを使用するトランザクションは一般的には両方のチェーンで有効です。つまり、あなたは両方のコインを同時に使用するかもしれないということです。これは「リプレイ」と呼ばれています。これを防ぐには、両方のチェーンで異なるトランザクションを使用してコインを移動させる必要があります。
+
 
 
 Fork detection
 --------------
+フォークの検出
+-------------
 
 Electrum (version 2.9 and higher) is able to detect consensus failures
 between servers (blockchain forks), and lets users select their branch
 of the fork.
+
+Electrum(バージョン2.9以上)はサーバ間のコンセンサス障害（ブロックチェーンのフォーク）を検出し、ユーザーがフォークのブランチを選択できるようにします。
 
 * Electrum will download and validate block headers sent by servers
   that may follow different branches of a fork in the Bitcoin
@@ -49,18 +70,26 @@ of the fork.
   efficiently using binary search. The purpose of MCV is to detect and
   handle blockchain forks that are invisible to the classical SPV
   model.
-    
+  
+* ElectrumはMonacoinブロックチェーンにおけるフォークの、異なるブランチに追従しているかもしれない複数のサーバから送信されるブロックヘッダをダウンロードし検証します。線形性シーケンスの代わりにブロックヘッダは木構造で編成されます。分岐点は、バイナリ検索を使用して効率的に配置されます。MCVの目的は、古典的なSPVモデルでは見えないブロックチェーンフォークを検出して処理することです。
+    
 * The desired branch of a blockchain fork can be selected using the
   network dialog. Branches are identified by the hash and height of
   the diverging block. Coin splitting is possible using RBF
   transaction (a tutorial will be added).
+  
+* ブロックチェーンフォークの希望のブランチはネットワークダイヤログを使用して選択できます。ブランチは、分岐ブロックのハッシュと高さによって識別されます。RBFトランザクションを使用してコインの分離が可能です（チュートリアルが追加されます）。
 
 
 This feature allows you to pick and choose which chain and network you spend on.
 
+この機能を使用すると、あなたがコインを消費するチェーンとネットワークを選別することができます。
+
 
 Procedure
 ---------
+手順
+----
 
    1. Preparation
 
