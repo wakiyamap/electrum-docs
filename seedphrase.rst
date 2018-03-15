@@ -1,11 +1,17 @@
 Electrum Seed Version System
 ============================
+Electrum Seedバージョンシステム
+=============================
 
 This document describes the Seed Version System used in Electrum
 (version 2.0 and higher).
 
+このドキュメントではElectrumで用いられているSeedバージョンシステムのことが記述されています。（バージョン2.0以上）
+
 Description
 -----------
+説明
+----
 
 Electrum derives its private keys and addresses from a seed phrase
 made of natural language words. Starting with version 2.0, Electrum
@@ -13,10 +19,14 @@ seed phrases include a version number, whose purpose is to indicate
 which derivation should be followed in order to derive private keys
 and addresses.
 
+Electrumは自然言語で作成されているSeedフレーズから秘密鍵とアドレスを導き出しています。バージョン2.0以降、Electrum Seedフレーズはバージョン番号を含み、その目的は秘密鍵とアドレスを見忌引き出すためにどのデリベーションをたどるべきかを示すことです。
+
 In order to eliminate the dependency on a fixed wordlist, the master
 private key and the version number are both obtained by hashes of the
 UTF8 normalized seed phrase. The version number is obtained by looking
 at the first bits of:
+
+固定ワードリストへの依存を排除するために、マスター秘密鍵およびバージョン番号は両方とも、UTF8正規化Seedフレーズのハッシュによって得られます。バージョン番号は次の最初のビットを見ることで得られます。
 
 .. code-block:: python
 
@@ -25,9 +35,12 @@ at the first bits of:
 The version number is also used to check seed integrity; in order to
 be correct, a seed phrase must produce a registered version number.
 
+バージョン番号はSeedの整合性を確かめるためにも使用されます。正確であるために、Seedフレーズは登録されたバージョン番号を提示しなければなりません。
 
 Motivation
 ----------
+動機
+----
 
 Early versions of Electrum (before 2.0) used a bidirectional encoding
 between seed phrase and entropy. This type of encoding requires a
