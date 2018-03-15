@@ -1,14 +1,22 @@
 The Python Console
 ==================
+Python コンソール
+================
 
 Most Electrum commands are available not only using the command-line,
 but also in the GUI Python console. 
 
+ほとんどのELectrumコマンドはコマンドラインだけでなくGUI Pythonコンソールでも使用できます。
+
 The results are Python objects, even though they are sometimes
 rendered as JSON for clarity.
 
+わかりやすくするためにJSONで表示されることがありますが結果はPythonオブジェクトです。
+
 Let us call listunspent(), to see the list of unspent outputs in the
 wallet:
+
+listunspent()を呼び出して、ウォレット内の未使用アウトプットの一覧を確認しましょう。
 
 .. code-block:: python
 
@@ -33,6 +41,8 @@ wallet:
 Note that the result is rendered as JSON.  However, if we save it to a
 Python variable, it is rendered as a Python object:
 
+結果はJSONとして表示されることに注意してください。しかし、Python変数に保存すると、Pythonオブジェクトとして表示されます。
+
 .. code-block:: python
 
    >> u = listunspent()
@@ -41,6 +51,8 @@ Python variable, it is rendered as a Python object:
 
 This makes it possible to combine Electrum commands with Python. For
 example, let us pick only the addresses in the previous result:
+
+これにより、ElectrumコマンドとPythonを組み合わせることができます。たとえば、先ほどの結果中のアドレスのみを選択します。
 
 .. code-block:: python
 
@@ -52,6 +64,8 @@ example, let us pick only the addresses in the previous result:
 
 Here we combine two commands, listunspent and dumpprivkeys, in order
 to dump the private keys of all adresses that have unspent outputs:
+
+ここでは、未使用アウトプットを持つすべてのアドレスの秘密鍵をダンプするために、listunspentとdumpprivkeysの2つのコマンドを組み合わせています:
 
 .. code-block:: python
 
@@ -66,6 +80,8 @@ wallet is encrypted.
 The GUI methods can be accessed through the gui variable.
 For example, you can display a QR code from a string
 using gui.show_qrcode. Example:
+
+ウォレットが暗号化されている場合、dumpprivkeyにはパスワードが必要です。GUIメソッドはgui変数から利用できます。たとえば、gui.show_qrcodeを使用して文字列からQRコードを表示することができます。例：
 
 .. code-block:: python
 
