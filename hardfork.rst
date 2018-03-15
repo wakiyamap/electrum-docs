@@ -95,14 +95,25 @@ Procedure
 
       a. Menu ➞ View ➞ Show Coins
       b. Menu ➞ Tools ➞ Preferences ➞ Propose Replace-By-Fee ➞ "Always"
-
-   2. Select a chain / network
+      
+   1. 準備
+  
+     a. メニュー ➞ 表示 ➞ 表示 コイン
+     b. メニュー ➞ ツール ➞ 設定 ➞ Propose Replace-By-Fee ➞ "Always"
+     
+  2. Select a chain / network
 
       a. Menu ➞ Tools ➞ Network
 
          Notice how the branches have different hashes at different heights.
          You can verify which chain you're on by using block explorers to verify
          the hash and height.
+  
+  2. チェーン/ネットワークを選択する
+  
+     a. メニュー ➞ ツール ➞ ネットワーク
+     
+         ブランチは異なる高さでは異なるハッシュを持つことに注意してください。ブロックエクスプローラーを使ってハッシュと高さを確認することであなたが度のチェーン上にいるか確認することができます。
 
             .. image:: png/coin_splitting/select_main_chain.png
             .. image:: png/coin_splitting/chain_search_height.png
@@ -114,27 +125,48 @@ Procedure
       b. Enter how many coins you'd like to split. (enter " ! " for ALL)
       c. Check "Replaceable"
       d. Send ➞ Sign ➞ Broadcast
+      
+   3. あなた自身にコインを送信する
+   
+      a. 受信アドレスを送信タブにコピー
+      b. 分離したいコインの数を入力し素（全ての場合"!"を入力）
+      c. "Replaceable"をチェック
+      d. 送信 ➞ 署名 ➞ 発信
 
    4. Wait for the transaction to confirm on one network.
 
       a. You'll want to switch between chains (via the network panel)
          to monitor the transaction status.
+         
+   4. 1つのネットワークにトランザクションが承認されるまで待つ
+   
+      a. ネットネットワークパネルを介してチェーンを切り替え、トランザクションステータスを監視する
 
       b. Wait until you see the transaction confirm on one chain.
+      
+      b. 1つのチェーン上でトランザクションが承認されるのを確認するまで待つ
 
          .. image:: png/coin_splitting/unconfirmed.png
          .. image:: png/coin_splitting/confirmed.png
 
-      c. Immediately use "RBF" on the unconfirmed transaction to "Increase fee"
+      c. Immediately use "RBF" on the unconfirmed transaction to "Increase fee"
+      
+      c. 即座に未承認トランザクションで"RBF"を使用して"Increase fee"を行う
 
          .. image:: png/coin_splitting/increase_fee.png
 
    5. Wait for both chains to confirm the transaction.
+   
+   5. トランザクションが両方のチェーンで承認されるのを待つ
 
    6. Verify the transaction has a different TXID on each chain.
+
+   6. トランザクションがそれぞれのチェーンで異なるTXIDを持っていることを確認する
 
          .. image:: png/coin_splitting/main_chain_txid.png
          .. image:: png/coin_splitting/alternate_chain_txid.png
 
 You will now have coins seperately spendable on each chain.  If it failed,
 no harm done, you sent to yourself!  Just try again.
+
+これでもうコインがそれぞれのチェーンで別々に使用できます。もし失敗しても、あなた自身に送信しているため害はありません。もう一度挑戦してください。
