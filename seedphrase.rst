@@ -48,9 +48,13 @@ fixed wordlist. This means that future versions of Electrum must ship
 with the exact same wordlist, in order to be able to read old seed
 phrases.
 
+旧バージョンのElectrum(2.0より前)はSeedフレーズとエントロピーの双方向エンコーディングを用いていました。このタイプのエンコーディングは固定の単語リストを必要とします。これが意味するのは将来のバージョンののElectrumは過去のSeedフレーズが解読可能であるために全く同じ単語リストを備えなければならないということです。
+
 BIP39 was introduced two years after Electrum. BIP39 seeds include a
 checksum, in order to help users figure out typing errors. However,
 BIP39 suffers the same shortcomings as early Electrum seed phrases:
+
+BIP39はElectrumの二年後に発表されました。BIP39のSeedはチェックサムを含み、タイプミスを検出するのを助けていました。しかしながらBIP39にはかつてのElectrum Seedフレーズと同じ欠点があります：
 
  - A fixed wordlist is still required. Following our recommendation,
    BIP39 authors decided to derive keys and addresses in a way that
@@ -60,6 +64,8 @@ BIP39 suffers the same shortcomings as early Electrum seed phrases:
    problem is exacerbated by the fact that BIP39 proposes to create
    one wordlist per language. This threatens the portability of BIP39
    seed phrases.
+   
+ - 固定の単語リストが依然として要求されます。我々の勧告を受けて、BIP39の著者は鍵とアドレスを生成するのに単語リストには依存しない方法をとりました。しかしながら、BIP39はチェックサムを計算するためにその単語リストを必要とします。チェックサムには明らかに矛盾があり、我々の勧告の目的を失敗させます。この問題はBIP39が言語ごとに一つの単語リストを作成しようと提案したことで悪化しました。これがBIP39 Seedフレーズの移植性を脅かしています。
 
  - BIP39 seed phrases do not include a version number. This means that
    software should always know how to generate keys and
@@ -72,10 +78,14 @@ BIP39 suffers the same shortcomings as early Electrum seed phrases:
    then the software will not be able to detect that the corresponding
    seed phrases are not supported, and it will return an empty wallet
    instead. This threatens users funds.
+   
+ - BIP39 Seedフレーズはバージョン番号を含みません。つまりソフトウェアは常に鍵とアドレスを生成する方法を知っていなければなりません。BIP43はウォレットソフトウェアはBIP32フレームワーク内に存在する様々な生成スキームを試行することを提案しています。これは著しく非効率的であり、今後のウォレットはそれまでに利用された生成メソッドのすべてをサポートする仮定に基づいています。もし、将来ウォレットの開発者が特定の生成メソッドは廃止予定の為、それの実行はやめることに決めた場合、そのソフトウェアは、サポートしていない該当Seedフレーズを検出することができず、代わりに空のウォレットを返すでしょう。これによってユーザーの資産が脅かされます。
 
 For these reasons, Electrum does not generate BIP39 seeds. Starting
 with version 2.0, Electrum uses the following Seed Version System,
 which addresses these issues.
+
+これらの理由から、ElectrumはBIP39 Seedの生成は行ないません。バージョン2.0から、Electrumは以下のSeedバージョンシステムを使用してこれらの問題に対処しています。
 
 Electrum 2.0 derives keys and addresses from a hash of the UTF8
 normalized seed phrase with no dependency on a fixed wordlist.
@@ -84,15 +94,20 @@ portable, and that future wallet implementations will not need
 today's wordlists in order to be able to decode the seeds
 created today. This reduces the cost of forward compatibility.
 
+Electrum2.0はUTF8正規化された固定の単語リストに依存しないSeedフレーズのハッシュから鍵とアドレスを生成します。つまり単語リストはSeedは移植性を保ったままウォレット間で異なることができます。そして今日生成されたSeedをデコードするこために、将来のウォレットの実装は今日の単語リストを必要としません。これによって前方互換性のコストを減らしています。
 
 
 
 Version number
 --------------
+バージョン番号
+------------
 
 The version number is a prefix of a hash derived from the seed
 phrase. The length of the prefix is a multiple of 4 bits. The prefix
 is computed as follows:
+
+バージョン番号はSeedフレーズから生成されたハッシュの接頭辞です。長さは4bitの倍数で、以下のように計算されます：
 
 .. code-block:: python
 
