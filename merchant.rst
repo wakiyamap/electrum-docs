@@ -1,12 +1,12 @@
 How to accept Bitcoin on a website using Electrum
 =================================================
-Electrumを使ったWebサイト上でのMonacoinの受け取り方
+Electrumを使ったWebサイト上でのBitcoinの受け取り方
 ================================================
 
 This tutorial will show you how to accept Bitcoin on a website with
 SSL signed payment requests. It is updated for Electrum 2.6.
 
-このチュートリアルではSSL化された支払いリクエストを使ってWebサイト上でMonacoinを受け取る方法を説明しています。Electrum2.6.で更新されています。
+このチュートリアルではSSL化された支払いリクエストを使ってWebサイト上でBitcoinを受け取る方法を説明しています。Electrum2.6.で更新されています。
 
 Requirements
 ------------
@@ -213,7 +213,7 @@ The page shows the payment request. You can open the
 bitcoin: URI with a wallet, or scan the QR code. The bottom
 line displays the time remaining until the request expires.
 
-このページには支払いリクエストが載っています。ウォレットでMonaocin: URIを開くか、QRコードをスキャンすることが出来ます。最後の行はリクエストの期限が切れるまでに残された時間を表しています。
+このページには支払いリクエストが載っています。ウォレットでBitcoin: URIを開くか、QRコードをスキャンすることが出来ます。最後の行はリクエストの期限が切れるまでに残された時間を表しています。
 
 .. image:: png/payreq_window.png
           
