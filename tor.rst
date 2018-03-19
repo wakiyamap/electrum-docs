@@ -230,6 +230,8 @@ Option 2
 ----------
 In windows, On your desktop you will have a electrum icon. Copy and paste this to make a copy. If not you can find the electrum folder in C:\Program Files (x86)\Electrum\
 
+オプション 2
+-----------
 Windowsでは、デスクトップにElectrumアイコンがあるしょう。C:\Program Files (x86)\Electrum\
 にElectrumフォルダを見つけられない場合、コピーを作成するためにコピー＆ペーストしてください。
 
