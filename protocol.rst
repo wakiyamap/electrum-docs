@@ -1,28 +1,15 @@
-Electrum protocol specification
-===============================
 Electrumのプロトコル仕様
 ======================
 
-Stratum is a universal bitcoin communication protocol used
-mainly by bitcoin client Electrum and miners.
-
 StratumはMonacoinクライアントであるElectrumとマイナーに主に使用されている一般的なMonacoin通信プロトコルです。
-
-Format
-------
 フォーマット
 -----------
 
-Stratum protocol is based on `JSON-RPC 2.0`_ (although it doesn't
-include "jsonrpc" information in every message). Each
-message has to end with a line end character (\n).
 
 StratumプロトコルはJSON-RPC 2.0に基づいています。（ただし、メッセージに「jsonrpc」情報は含まれていません）各メッセージは、終端文字（\n）で終わらなければなりません。
 
 .. _JSON-RPC 2.0: http://www.jsonrpc.org/specification
 
-Request
-```````
 リクエスト
 `````````
 
@@ -34,17 +21,10 @@ Typical request looks like this:
 
    { "id": 0, "method":"some.stratum.method", "params": [] }
 
-- id begins at 0 and every message has its unique id number
-- list and description of possible methods is below
-- params is an array, e.g.: [ "1myfirstaddress", "1mysecondaddress", "1andonemoreaddress" ]
 
 - idは0から始まり、すべてのメッセージは固有のID番号を持つ
 - 可能なメソッドのリストと説明は以下のとおり
 - paramsは配列。例：["1myfirstaddress"、 "1mysecondaddress"、 "1andonemoreaddress"]
-
-Response
-````````
-Responses are similar:
 
 応答
 ```
@@ -54,28 +34,9 @@ Responses are similar:
 
    { "id": 0, "result": "616be06545e5dd7daec52338858b6674d29ee6234ff1d50120f060f79630543c"}
 
-- id is copied from the request message (this way client can pair each
-  response to one of his requests)
 - idはリクエストメッセージからコピーされます（このようにしてクライアントは各応答とリクエストをペアにすることができます）
 - result can be:
 
-  - null
-  - a string (as shown above)
-  - a hash, e.g.:
-
-    .. code-block:: json
-
-       { "nonce": 1122273605, "timestamp": 1407651121, "version": 2, "bits": 406305378 }
-
-  - an array of hashes, e.g.:
-
-    .. code-block:: json
-
-       [ { "tx_hash:
-       "b87bc42725143f37558a0b41a664786d9e991ba89d43a53844ed7b3752545d4f",
-       "height": 314847 }, { "tx_hash":
-       "616be06545e5dd7daec52338858b6674d29ee6234ff1d50120f060f79630543c",
-       "height": 314853 } ]
        
  - 結果は次のようになります
  
@@ -97,24 +58,15 @@ Responses are similar:
        "616be06545e5dd7daec52338858b6674d29ee6234ff1d50120f060f79630543c",
        "height": 314853 } ]   
 
-Methods
--------
 メソッド
 -------
 
 server.version
 ``````````````
 
-This is usually the first client's message, plus it's sent every
-minute as a keep-alive message. Client sends its own version and
-version of the protocol it supports. Server responds with its
-supported version of the protocol (higher number at server-side is
-usually compatible).
 
 これは通常、クライアントの最初のメッセージであるきーっぷアライブメッセージとして毎分送信されます。クライアントは自身のバージョンとサポートするプロトコルのバージョンを送信します。サーバはサポートするバージョンのプロトコルで応答します（通常サーバ側の数値が高いほど互換性があります）。
 
-The version of the protocol being explained in this documentation
-is: 0.10.
 
 このドキュメントで説明されているプロトコルのバージョンは0.10です。
 
@@ -144,24 +96,8 @@ server.donation_address
 server.peers.subscribe
 ``````````````````````
 
-Client can this way ask for a list of other active
-servers. Servers are connected to an IRC channel (#electrum
-at freenode.net) where they can see each other. Each server
-announces its version, history pruning limit of every
-address ("p100", "p10000" etc.–the number means how many
-transactions the server may keep for every single address)
-and supported protocols ("t" = tcp@50001, "h" = http@8081,
-"s" = tcp/tls@50002, "g" = https@8082; non-standard port
-would be announced this way: "t3300" for tcp on port 3300).
-
 クライアントは、このやり方で他のアクティブなサーバのリストを要求することができます。サーバはIRCチャネル（#electrum at freenode.net）に接続されており、互いに見ることができます。各サーバはそのバージョン、各アドレスの履歴プルーンリミット（"p100", "p10000" 等。数字はそれぞれのアドレスのためにいくつのトランザクションをサーバが保存しておくかを意味している）、サポートプロトコル（"t" = tcp@50001, "h" = http@8081,
 "s" = tcp/tls@50002, "g" = https@8082; 非標準のポートはこのように告知される: "t3300" for tcp on port 3300）を告知します。
-
-
-**Note:** At the time of writing there isn't a true
-subscription implementation of this method, but servers
-only send one-time response. They don't send notifications
-yet.
 
 **注意** 執筆時点ではこのメソッドの真のサブスクリプション実装は存在せず、サーバは応答を一度だけ送信します。サーバは今のところ通知の送信をしません。
 
@@ -185,8 +121,6 @@ yet.
 
 blockchain.numblocks.subscribe
 ``````````````````````````````
-A request to send to the client notifications about new
-blocks height. Responds with the current block height.
 
 新たなブロックの高さに関する通知をクライアントに送信するリクエスト。現在のブロック高を返答します。
 
@@ -213,9 +147,6 @@ blocks height. Responds with the current block height.
 
 blockchain.headers.subscribe
 ````````````````````````````
-
-A request to send to the client notifications about new
-blocks in form of parsed blockheaders.
 
 解析したブロックヘッダの形式で新たなブロックについての通知をクライアントに送信するリクエスト。
 
@@ -256,11 +187,6 @@ blocks in form of parsed blockheaders.
 blockchain.address.subscribe
 ````````````````````````````
 
-A request to send to the client notifications when status
-(i.e., transaction history) of the given address changes.
-Status is a hash of the transaction history. If there isn't
-any transaction for the address yet, the status is null.
-
 与えられたアドレスのステータス（例えばトランザクション履歴）が変化したときに通知をクライアントに送信するリクエスト。ステータスとはトランザクション履歴のハッシュのことです。アドレスにトランザクションがまだない場合、ステータスはnullです。
 
 *request:*
@@ -283,8 +209,6 @@ any transaction for the address yet, the status is null.
 
 blockchain.address.get_history
 ``````````````````````````````
-
-For a given address a list of transactions and their heights (and fees in newer versions) is returned.
 
 指定されたアドレスに対して、トランザクションのリストとその高さ（および新しいバージョンの手数料）が返されます。
 
@@ -357,8 +281,6 @@ blockchain.block.get_chunk
 blockchain.transaction.broadcast
 ````````````````````````````````
 
-Submits raw transaction (serialized, hex-encoded) to the network. Returns transaction id, or an error if the transaction is invalid for any reason.
-
 生のトランザクション（シリアル化、16進数エンコード済）をネットワークに送信します。トランザクションidを返すか、トランザクションが何かしらの理由で無効な場合はエラーを返します。
 
 *request:*
@@ -382,10 +304,6 @@ blockchain.transaction.get_merkle
 
 blockchain.transaction.get
 ``````````````````````````
-
-Method for obtaining raw transaction (hex-encoded) for
-given txid. If the transaction doesn't exist, an error is
-returned.
 
 与えられたtxidの生のトランザクション（16進数エンコード済）を入手するためのメソッド。トランザクションが存在しない場合、エラーが返されます。
 
@@ -413,11 +331,11 @@ returned.
 blockchain.estimatefee
 ``````````````````````
 
-Estimates the transaction fee per kilobyte that needs to be paid for a transaction to be included within a certain number of blocks. If the node doesn’t have enough information to make an estimate, the value -1 will be returned.
 
-Parameter: How many blocks the transaction may wait before being included.
 
 特定のブロック数以内にトランザクションが取り込まれるために必要なkbyteあたりのトランザクション手数料を推定します。推定するのに十分な情報をノードが有していない場合、値-1が返されます。
+
+Parameter:トランザクションが取り込まれるまでに待つであろうブロック数
 
 *request:*
 
@@ -439,13 +357,8 @@ Parameter: How many blocks the transaction may wait before being included.
    { "id": 17, "result": -1 }
 
 
-External links
---------------
 外部リンク
 ---------
-
-- https://docs.google.com/a/palatinus.cz/document/d/17zHy1SUlhgtCMbypO8cHgpWH73V5iUQKk_0rWvMqSNs/edit?hl=en_US" original Slush's specification of Stratum protocol
-- http://mining.bitcoin.cz/stratum-mining specification of Stratum mining extension
 
 - https://docs.google.com/a/palatinus.cz/document/d/17zHy1SUlhgtCMbypO8cHgpWH73V5iUQKk_0rWvMqSNs/edit?hl=en_US" SlushのStratumプロトコルのオリジナル詳細
 - http://mining.bitcoin.cz/stratum-mining 
