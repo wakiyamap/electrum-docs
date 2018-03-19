@@ -3,6 +3,7 @@ Electrum Seed Version System
 Electrum Seedバージョンシステム
 =============================
 
+
 This document describes the Seed Version System used in Electrum
 (version 2.0 and higher).
 
@@ -20,6 +21,7 @@ which derivation should be followed in order to derive private keys
 and addresses.
 
 Electrumは自然言語で出来たSeedフレーズから秘密鍵とアドレスを導き出しています。バージョン2.0以降、Electrum Seedフレーズはバージョン番号を含み、その目的は秘密鍵とアドレスを導き出すためにはどのデリベーションをたどるべきかを示すことです。
+
 
 In order to eliminate the dependency on a fixed wordlist, the master
 private key and the version number are both obtained by hashes of the
@@ -67,6 +69,7 @@ BIP39はElectrumの二年後に発表されました。BIP39のSeedはチェッ�
    
  - 固定の単語リストが依然として要求されます。我々の勧告を受けて、BIP39の著者は鍵とアドレスを生成するのに単語リストには依存しない方法をとりました。しかしながら、BIP39はチェックサムを計算するためにその単語リストを必要とします。チェックサムには明らかに矛盾があり、我々の勧告の目的を台無しにさせています。この問題はBIP39が言語ごとに一つの単語リストを作成しようと提案したことでさらに悪化しました。これがBIP39 Seedフレーズの移植性を脅かしています。
 
+
  - BIP39 seed phrases do not include a version number. This means that
    software should always know how to generate keys and
    addresses. BIP43 suggests that wallet software will try various
@@ -80,6 +83,7 @@ BIP39はElectrumの二年後に発表されました。BIP39のSeedはチェッ�
    instead. This threatens users funds.
    
  - BIP39 Seedフレーズはバージョン番号を含みません。つまりソフトウェアは常に鍵とアドレスを生成する方法を知っていなければなりません。BIP43ではウォレットソフトウェアはBIP32フレームワーク内に存在する様々な生成スキームを試行するようにすることを提案しています。これは著しく非効率的であり、今後のウォレットがそれまでに利用された生成メソッドのすべてをサポートするという仮定に基づいています。もし将来、ウォレットの開発者が特定の生成メソッドは廃止予定だからと、その実行をやめることに決めた場合、そのソフトウェアは、サポートしていない該当Seedフレーズを検出することができず、代わりに空のウォレットを返すでしょう。これはユーザーの資産を脅かします。
+
 
 For these reasons, Electrum does not generate BIP39 seeds. Starting
 with version 2.0, Electrum uses the following Seed Version System,
@@ -223,6 +227,7 @@ generate the seed.
 
 攻撃者の観点からすると、Seedバージョンハッシュのプレフィックスを課すことで追加された制約はSeedのエントロピーを減少させることはありません。なぜならSeedフレーズから得られる情報はないからです。攻撃者は2^nの候補Seedフレーズを列挙する必要があり、nはSeedを生成するのに使われたエントロピーのbit数です。
 
+
 However, the test made by the attacker will return faster if the
 candidate seed is not a valid seed, because the attacker does not need
 to generate the key. This means that the imposed prefix reduces the
@@ -248,6 +253,15 @@ The number of hashes required to test a candidate seed is: p * (1+2^m) + (1-p)*1
 Therefore, the cost of an attack is: 2^n * (1 + 2^(m-k))
 
 ゆえに、攻撃コストは 2^n * (1 + 2^(m-k))
+
+On each iteration of the attack, the probability to obtain a valid seed is p = 2^-k
+
+
+The number of hashes required to test a candidate seed is: p * (1+2^m) + (1-p)*1 = 1 + 2^(m-k)
+
+
+Therefore, the cost of an attack is: 2^n * (1 + 2^(m-k))
+
 
 This can be approximated as 2^(n + m - k) if m>k and as 2^n otherwise.
 

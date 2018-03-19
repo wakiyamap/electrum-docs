@@ -3,6 +3,7 @@ Using cold storage with the command line
 コマンドラインからコールドストレージを使用する
 =========================================
 
+
 This page will show you how to sign a transaction with
 an offline Electrum wallet, using the Command line.
 
@@ -12,6 +13,7 @@ Create an unsigned transaction
 ------------------------------
 未署名のトランザクションを作成する
 -------------------------------
+
 
 With your online (watching-only) wallet, create an
 unsigned transaction:
@@ -28,7 +30,6 @@ watching-only wallet.
 
 未署名のトランザクションは、 'unsigned.txn'という名前のファイルに格納されます。閲覧専用ウォレットを使用する場合は、--unsignedオプションは不要です。
 
-
 You may view it using:
 
 以下のコマンドで中身を見ることができます。
@@ -42,11 +43,13 @@ Sign the transaction
 トランザクションに署名する
 -----------------------
 
+
 The serialization format of Electrum contains the master
 public key needed and key derivation, used by the offline
 wallet to sign the transaction.
 
 Electrumのシリアライズ形式には、オフラインウォレットでトランザクションに署名する際に使用される、必要なマスター公開鍵と鍵導出(Key derivation)が含まれています。
+
 
 Thus we only need to pass the serialized transaction to
 the offline wallet:
@@ -67,9 +70,11 @@ Broadcast the transaction
 トランザクションをブロードキャストする
 ----------------------------------
 
+
 Send your transaction to the Bitcoin network, using broadcast:
 
 'broadcast'を使用してMonacoinネットワークにトランザクションを送信します。
+
 
 .. code-block:: bash
 
