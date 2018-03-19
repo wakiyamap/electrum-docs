@@ -419,6 +419,8 @@ Parameter: How many blocks the transaction may wait before being included.
 
 特定のブロック数以内にトランザクションが取り込まれるために必要なkbyteあたりのトランザクション手数料を推定します。推定するのに十分な情報をノードが有していない場合、値-1が返されます。
 
+Parameter:トランザクションが取り込まれるまでに待つであろうブロック数
+
 *request:*
 
 .. code-block:: json
