@@ -254,15 +254,6 @@ Therefore, the cost of an attack is: 2^n * (1 + 2^(m-k))
 
 ゆえに、攻撃コストは 2^n * (1 + 2^(m-k))
 
-On each iteration of the attack, the probability to obtain a valid seed is p = 2^-k
-
-
-The number of hashes required to test a candidate seed is: p * (1+2^m) + (1-p)*1 = 1 + 2^(m-k)
-
-
-Therefore, the cost of an attack is: 2^n * (1 + 2^(m-k))
-
-
 This can be approximated as 2^(n + m - k) if m>k and as 2^n otherwise.
 
 これは2^(n + m - k)、または2^nと近似することができます。
