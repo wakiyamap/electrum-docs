@@ -6,7 +6,7 @@ Electrumのプロトコル仕様
 Stratum is a universal bitcoin communication protocol used
 mainly by bitcoin client Electrum and miners.
 
-StratumはMonacoinクライアントであるElectrumとマイナーに主に使用されている一般的なMonacoin通信プロトコルです。
+StratumはBitcoinクライアントであるElectrumとマイナーに主に使用されている一般的なBitcoin通信プロトコルです。
 
 Format
 ------
