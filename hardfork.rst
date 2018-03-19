@@ -24,12 +24,12 @@ branching from the original, essentially creating another "version of
 bitcoin" or cryptocurrency, with its very own blockchain, set of
 rules, and market value.
 
-ブロックチェーンのフォーク（分岐）は、逸脱するネットワークがオリジナルのチェーンから枝分かれして競合するブロックのチェーンが生成、維持されると発生します。本質的にMonacoin（暗号通貨）の別のバージョンが生まれ、独自のブロックチェーン、ルールセット、市場価値を持ちます。
+ブロックチェーンのフォーク（分岐）は、逸脱するネットワークがオリジナルのチェーンから枝分かれして競合するブロックのチェーンが生成、維持されると発生します。本質的にBitcoin（暗号通貨）の別のバージョンが生まれ、独自のブロックチェーン、ルールセット、市場価値を持ちます。
 
 If there is a fork of the Bitcoin blockchain, two distinct currencies
 will coexist, having different market values.
 
-Monacoinブロックチェーンのフォークが発生した場合、二つの別々の通貨が同時に存在し、異なる市場価値を持ちます。
+Bitcoinブロックチェーンのフォークが発生した場合、二つの別々の通貨が同時に存在し、異なる市場価値を持ちます。
 
 
 What does it mean to 'split your coins'?
@@ -48,7 +48,7 @@ means that you might be spending both coins simultaneously. This is
 called 'replay'. To prevent this, you need to move your coins using
 transactions that differ on both chains.
 
-フォーク以前にMonacoinを所持していた場合、フォーク後にこれらのコインを使用するトランザクションは一般的には両方のチェーンで有効です。つまり、あなたは両方のコインを同時に使用するかもしれないということです。これは「リプレイ」と呼ばれています。これを防ぐには、両方のチェーンで異なるトランザクションを使用してコインを移動させる必要があります。
+フォーク以前にBitcoinを所持していた場合、フォーク後にこれらのコインを使用するトランザクションは一般的には両方のチェーンで有効です。つまり、あなたは両方のコインを同時に使用するかもしれないということです。これは「リプレイ」と呼ばれています。これを防ぐには、両方のチェーンで異なるトランザクションを使用してコインを移動させる必要があります。
 
 
 
@@ -71,7 +71,7 @@ Electrum(バージョン2.9以上)はサーバ間のコンセンサス障害（�
   handle blockchain forks that are invisible to the classical SPV
   model.
   
-* ElectrumはMonacoinブロックチェーンにおけるフォークの、異なるブランチに追従しているかもしれない複数のサーバから送信されるブロックヘッダをダウンロードし検証します。線形性シーケンスの代わりにブロックヘッダは木構造で編成されます。分岐点は、バイナリ検索を使用して効率的に配置されます。MCVの目的は、古典的なSPVモデルでは見えないブロックチェーンフォークを検出して処理することです。
+* ElectrumはBitcoinブロックチェーンにおけるフォークの、異なるブランチに追従しているかもしれない複数のサーバから送信されるブロックヘッダをダウンロードし検証します。線形性シーケンスの代わりにブロックヘッダは木構造で編成されます。分岐点は、バイナリ検索を使用して効率的に配置されます。MCVの目的は、古典的なSPVモデルでは見えないブロックチェーンフォークを検出して処理することです。
     
 * The desired branch of a blockchain fork can be selected using the
   network dialog. Branches are identified by the hash and height of
