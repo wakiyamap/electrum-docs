@@ -14,7 +14,7 @@ simplifying Bitcoin. Startup times are instant because it
 operates in conjunction with high-performance servers that
 handle the most complicated parts of the Bitcoin system.
 
-Electrumが焦点にあてているのはスピード、少ない計算資源の使用量、Monacoinを簡単にすることです。Monacoinのシステムの最も複雑な部分は高性能なサーバーが操作し、Electrumはこれと連携して動作するので起動時間はわずかです。
+Electrumが焦点にあてているのはスピード、少ない計算資源の使用量、Bitcoinを簡単にすることです。Bitcoinのシステムの最も複雑な部分は高性能なサーバーが操作し、Electrumはこれと連携して動作するので起動時間はわずかです。
 
 Does Electrum trust servers?
 ----------------------------
@@ -67,7 +67,7 @@ means that it provides the same level of security as a Bitcoin private
 key (of length 256 bits). Indeed, an elliptic curve key of length n
 provides n/2 bits of security.
 
-Electrumによって作成されたシードフレーズは132bitのエントロピーを持ちます。つまり、Monacoinの秘密鍵（長さ256bit）と同じレベルの
+Electrumによって作成されたシードフレーズは132bitのエントロピーを持ちます。つまり、Bitcoinの秘密鍵（長さ256bit）と同じレベルの
 セキュリティを提供します。実際、長さnの楕円曲線キーは、n / 2bitのセキュリティを提供します。
 
 I have forgotten my password. What can I do?
@@ -101,7 +101,7 @@ them in the Bitcoin blockchain. In general, the speed of confirmation
 depends on the fee you attach to your transaction; miners prioritize
 transactions that pay the highest fees.
 
-Monacoinトランザクションはマイナーがブロックチェーンに対してその書き込みを許可した時に「承認」されます。一般に承認スピードはあなたがトランザクションに添付した手数料に依存します。マイナーは最も高い手数料を支払うトランザクションを優先します。
+Bitcoinトランザクションはマイナーがブロックチェーンに対してその書き込みを許可した時に「承認」されます。一般に承認スピードはあなたがトランザクションに添付した手数料に依存します。マイナーは最も高い手数料を支払うトランザクションを優先します。
 
 Recent versions of Electrum use "dynamic fees" in order to make sure
 that the fee you pay with your transaction is adequate. This feature
@@ -154,7 +154,7 @@ When you freeze an address, the funds in that address will not be used
 for sending bitcoins. You cannot send bitcoins if you don't have
 enough funds in the non-frozen addresses.
 
-アドレスをフリーズすると、そのアドレスの資金はMonacoinの送信に使用されません。フリーズされていないアドレスに十分な資金がない場合、Monacoinは送信できません。
+アドレスをフリーズすると、そのアドレスの資金はBitcoinの送信に使用されません。フリーズされていないアドレスに十分な資金がない場合、Bitacoinは送信できません。
 
 
 How is the wallet encrypted?
@@ -188,7 +188,7 @@ Wallet file encryption is activated by default since version 2.8. It
 is intended to protect your privacy, but also to prevent you from
 requesting bitcoins on a wallet that you do not control.
 
-ウォレットファイルの暗号化は、バージョン2.8以降ではデフォルトで有効になっています。これはあなたのプライバシーを保護することを目的としていますが、あなたが管理していないウォレットにおいてMonacoinを請求できないようにするためでもあります。
+ウォレットファイルの暗号化は、バージョン2.8以降ではデフォルトで有効になっています。これはあなたのプライバシーを保護することを目的としていますが、あなたが管理していないウォレットにおいてBitcoinを請求できないようにするためでもあります。
 
 
 Does Electrum support cold wallets?
@@ -203,7 +203,7 @@ Yes, see :ref:`Cold Storage <coldstorage>`.
 
 Can I import private keys from other Bitcoin clients?
 -----------------------------------------------------
-他のMonacoinクライアントから秘密鍵をインポートできますか？
+他のBitcoinクライアントから秘密鍵をインポートできますか？
 ----------------------------------------------------
 
 In Electrum 2.0, you cannot import private keys in a wallet that has a
@@ -230,7 +230,7 @@ recovered from a seed.
 
 Can I sweep private keys from other Bitcoin clients?
 ----------------------------------------------------
-他のMonacoinクライアントから秘密鍵をスイープすることはできますか？
+他のBitcoinクライアントから秘密鍵をスイープすることはできますか？
 ------------------------------------------------------------
 
 Sweeping private keys means to send all the bitcoins they control to
@@ -239,7 +239,7 @@ become a part of your wallet.  Instead, all the bitcoins they control
 are sent to an address that has been deterministically generated from
 your wallet seed.
 
-秘密鍵のスイープとは、その秘密鍵が管理しているすべてのMonacoinをあなたのウォレットの既存アドレス宛に送信することを意味します。スイープする秘密鍵はウォレットの一部にはなりません。代わりに、その秘密鍵が管理しているすべてのMonacoinはあなたのウォレットのシードから確定的に生成されたアドレスに対して送信されます。
+秘密鍵のスイープとは、その秘密鍵が管理しているすべてのBitcoinをあなたのウォレットの既存アドレス宛に送信することを意味します。スイープする秘密鍵はウォレットの一部にはなりません。代わりに、その秘密鍵が管理しているすべてのBitcoinはあなたのウォレットのシードから確定的に生成されたアドレスに対して送信されます。
 
 To sweep private keys, go to the Wallet menu -> Private Keys ->
 Sweep. Enter the private keys in the appropriate field. Leave the
@@ -327,7 +327,7 @@ Electrumでは、フォームを使用してユーザーインターフェイス
 
 Electrum freezes when I try to send bitcoins.
 --------------------------------------------
-Monacoinを送信しようとするとElectrumがフリーズします。
+Bitcoinを送信しようとするとElectrumがフリーズします。
 -------------------------------------------------
 
 
@@ -338,14 +338,14 @@ looks for unspent coins that are in your wallet in order to create a
 new transaction. Unspent coins can have different values, much like
 physical coins and bills.
 
-これは多数のトランザクションアウトプットを費やそうとしている場合（たとえばMonacoinのfaucetから数百もの寄付を集めた場合など）に発生する可能性があります。Monacoinを送信する際に、Electrumは新しいトランザクションを作成するためにウォレット内にある未使用のコインを探します。未使用のコインは、物理的な効果や紙幣と同じように異なった数値を持つことができます。
+これは多数のトランザクションアウトプットを費やそうとしている場合（たとえばBitcoinのfaucetから数百もの寄付を集めた場合など）に発生する可能性があります。Bitcoinを送信する際に、Electrumは新しいトランザクションを作成するためにウォレット内にある未使用のコインを探します。未使用のコインは、物理的な効果や紙幣と同じように異なった数値を持つことができます。
 
 If this happens, you should consolidate your transaction inputs by
 sending smaller amounts of bitcoins to one of your wallet addresses;
 this would be the equivalent of exchanging a stack of nickels for a
 dollar bill.
 
-このような場合は、ウォレットアドレスの1つに少量のMonacoinを送信してトランザクションインプットを統合する必要があります。これはたくさんの5セント硬貨のを1ドル紙幣と交換するのと同じです。
+このような場合は、ウォレットアドレスの1つに少量のBitcoinを送信してトランザクションインプットを統合する必要があります。これはたくさんの5セント硬貨のを1ドル紙幣と交換するのと同じです。
 
 .. _gap limit:
 
