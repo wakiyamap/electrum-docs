@@ -11,7 +11,7 @@ is used to view its history and to create transactions that
 have to be signed with the offline wallet before being
 broadcast on the online one.
 
-このドキュメントでは、Monacoinを保持するオフラインウォレットを作成、そしてその履歴を表示するための閲覧専用のオンラインウォレットの作成方法と、オンラインウォレットでブロードキャストする前に、オフラインウォレットでの署名が必要なトランザクションの作成方法を紹介します。
+このドキュメントでは、Bitcoinを保持するオフラインウォレットを作成、そしてその履歴を表示するための閲覧専用のオンラインウォレットの作成方法と、オンラインウォレットでブロードキャストする前に、オフラインウォレットでの署名が必要なトランザクションの作成方法を紹介します。
 
 
 Create an offline wallet
@@ -125,5 +125,5 @@ from the menu. Select the signed transaction file. In the window that
 opens up, press "broadcast". The transaction will be broadcasted over
 the Bitcoin network.
 
-オンラインマシンでメニューから「ツール(Tools)」->「取引情報の読み込み(Load transaction)」->「ファイルから(From file)」を選択します。署名済みトランザクションのファイルを選択します。開いたウィンドウで「発信(broadcast)」を押します。トランザクションはMonacoinネットワークを通してブロードキャストされます。
+オンラインマシンでメニューから「ツール(Tools)」->「取引情報の読み込み(Load transaction)」->「ファイルから(From file)」を選択します。署名済みトランザクションのファイルを選択します。開いたウィンドウで「発信(broadcast)」を押します。トランザクションはBitcoinネットワークを通してブロードキャストされます。
 
