@@ -16,7 +16,7 @@ set of Addresses.
   and certain funds should only be spendable if you both
   agree.
 
-- よくある利用法として資金を協力して管理したい場合が挙げられます：もしかしたらあなたとあなたの友人が一緒に会社を経営していて、一定の資金は両方が同意しなければ使用することができないかもしれません。
+- よくある利用法として資金を共同で管理したい場合が挙げられます：もしかしたらあなたとあなたの友人が一緒に会社を経営していて、一定の資金は両方が同意しなければ使用することができないかもしれません。
 
 - Another one is security: One of the wallets can be on
   your main machine, while the other one is on a offline
