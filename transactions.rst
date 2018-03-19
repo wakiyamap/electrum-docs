@@ -1,6 +1,7 @@
 Serialization of unsigned or partially signed transactions
 ==========================================================
 未署名、又は一部署名済みトランザクションのシリアライゼーション
+========================================================
 
 Electrum 2.0 uses an extended serialization format for transactions.
 The purpose of this format is to send unsigned and partially signed
