@@ -115,6 +115,7 @@ commands.
 Formatting outputs using jq
 ---------------------------
 jqを使って出力を成形する。
+-----------------------
 
 Command outputs are either simple strings or json structured data. A
 very useful utility is the 'jq' program.  Install it with:
@@ -258,6 +259,7 @@ wallet password
 Export private keys and sweep coins
 ```````````````````````````````````
 秘密鍵のエクスポートとコインのスイープ
+```````````````````````````````````
 
 The following command will export the private keys of all wallet
 addresses that hold some bitcoins:
