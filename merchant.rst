@@ -133,7 +133,7 @@ setconfigコマンドでssl_chainまでのパスを指定してください。
 
 Configure a requests directory
 ------------------------------
-レクエストディレクトリを設定する
+リクエストディレクトリを設定する
 -----------------------------
 
 This directory must be served by your webserver (eg Apache)
