@@ -105,7 +105,7 @@ Aliases
 You can use DNS aliases in place of bitcoin addresses, in most
 commands.
 
-ほとんどのコマンドにおいて、Monacoinアドレスの部分にDNSエイリアスを使うことできます。
+ほとんどのコマンドにおいて、bitcoinアドレスの部分にDNSエイリアスを使うことできます。
 
 .. code-block:: bash
 
@@ -262,7 +262,7 @@ Export private keys and sweep coins
 The following command will export the private keys of all wallet
 addresses that hold some bitcoins:
 
-次のコマンドでウォレットのMonacoinを持つすべてのアドレスをエクスポートします。
+次のコマンドでウォレットのbitcoinを持つすべてのアドレスをエクスポートします。
 
 .. code-block:: bash
 
