@@ -73,7 +73,7 @@ Broadcast the transaction
 
 Send your transaction to the Bitcoin network, using broadcast:
 
-'broadcast'を使用してMonacoinネットワークにトランザクションを送信します。
+'broadcast'を使用してBitcoinネットワークにトランザクションを送信します。
 
 
 .. code-block:: bash
