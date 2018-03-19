@@ -27,7 +27,7 @@ pubkeyの最初のバイトを見ることで拡張公開鍵であるかどう�
 - 0x02, 0x03, 0x04: legal Bitcoin public key (compressed or not).
 - 0xFF, 0xFE, 0xFD: extended public key.
 
-- 0x02, 0x03, 0x04：正当なMonacoin公開鍵（圧縮されているかどうか）
+- 0x02, 0x03, 0x04：正当なBitcoin公開鍵（圧縮されているかどうか）
 - 0xFF, 0xFE, 0xFD：拡張公開鍵
 
 
@@ -41,7 +41,7 @@ Extended public keys are of 3 types:
 
 - 0xFF: bip32の拡張公開鍵とデリベーション
 - 0xFE: Electrumのレガシーデリベーション：マスター公開鍵+デリベーション
-- 0xFD: 未知の公開鍵だがMonacoinのものであることはわかっている公開鍵
+- 0xFD: 未知の公開鍵だがBitcoinのものであることはわかっている公開鍵
 
 Public key
 ----------
@@ -50,7 +50,7 @@ Public key
 
 This is the legit Bitcoin serialization of public keys.
 
-これがMonacoinにおける公開鍵の正しいシリアライゼーションです。
+これがBitcoinにおける公開鍵の正しいシリアライゼーションです。
 
 +--------------+-------------------------------------+
 | 0x02 or 0x03 |    compressed public key (32 bytes) |
@@ -95,7 +95,7 @@ Electrumのレガシーデリベーション
 
 Bitcoin address
 ---------------
-Monacoinアドレス
+Bitcoinアドレス
 ---------------
 
 Used if we don't know the public key, but we know the
