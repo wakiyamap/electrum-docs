@@ -18,8 +18,9 @@ SegWitのアクティベーションがなされたことにより
 (`BIP141 <https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki>`__)
 Monacoinメインネットで使える新しい出力スクリプトテンプレートが導入されました。
 これはHDウォレットがマスター鍵からどのような種類のスクリプトを導出すべきかという点で新しい問題を提起します。
-これまでは、ほとんどのWalletにP2PKHまたはマルチ署名が埋め込まれて提供されていた
+これまでは、ほとんどのWalletに
 `BIP16 <https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki>`__
+で導入されP2PKHまたはマルチ署名が埋め込まれて提供されていた
 P2SHの出力であり、通常は2つのうちどちらを使用すべきかは属性から推論されました。
 私たちはこの知識を明確に持っていた方が良いと信じます。
 
