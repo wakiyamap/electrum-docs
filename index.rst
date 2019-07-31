@@ -19,6 +19,8 @@ GUI and beginners
    2fa
    multisig
    coldstorage
+   hardware-linux
+   tails
 
 Advanced users
 --------------
@@ -31,6 +33,7 @@ Advanced users
    merchant
    hardfork
    tor
+   gpg-check
 
 For developers
 --------------

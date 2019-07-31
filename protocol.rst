@@ -1,6 +1,8 @@
 Electrumのプロトコル仕様
 ======================
 
+(NOTE: このドキュメントは古くなっています。プロトコルの0.10より新しいバージョンの場合はこちらを見てください https://electrumx.readthedocs.io/en/latest/protocol.html )
+
 StratumはMonacoinクライアントであるElectrumとマイナーに主に使用されている一般的なMonacoin通信プロトコルです。
 フォーマット
 -----------

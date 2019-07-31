@@ -1,20 +1,29 @@
 Electrumを使ったWebサイト上でのMonacoinの受け取り方
 ================================================
 
-このチュートリアルではSSL化された支払いリクエストを使ってWebサイト上でMonacoinを受け取る方法を説明しています。Electrum2.6.で更新されています。
+このチュートリアルではSSL化された支払いリクエストを使ってWebサイト上で BIP-70_ に基づいたMonacoinを受け取る方法を説明しています。Electrum2.6.で更新されています。
+このドキュメントは3.1.2で更新されています。
+
+.. _BIP-70:
+    https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki
 
 要件
 ----
 
-- static HTMLを提供するWebサーバ
-- SSL証明書（CA(認証局)による署名）
-- バージョン2.6以上のElectrum
+* static HTMLを提供するWebサーバ
+* SSL証明書（CA(認証局)による署名 例えば Letsencrypt_）
+* バージョン3.1以上のElectrum
+* Electrum-Merchant_
+
+.. _Letsencrypt:
+    https://letsencrypt.org/
+.. _Electrum-Merchant:
+    https://pypi.org/project/electrum-merchant/
 
 商業用のウォレットを作成、使用する
 -----------------------------
 
 暗号通貨を安全に保存しておきたい場合は、保護されたマシン上にウォレットを作成してください。もしあなたの商業用サーバに誰かが侵入した場合、彼又は彼女は読み取り専用のウォレットにアクセスすることができるだけでコインを使用することはできません。
-
 しかし内部に隠れた侵入者は依然としてあなたのアドレス、取引、残高を監視することができます。商業目的には（あなたのメインウォレットではなく）分けたウォレットを使用することが推奨されています。
 
 .. code-block:: bash
@@ -46,12 +55,13 @@ Electrumを使ったWebサイト上でのMonacoinの受け取り方
 設定にSSL証明書を追加する
 -----------------------
 
-
 あなたのドメイン用の秘密鍵と公開証明書を持っている必要があります。
+これはウォレット・キーではなく、一致するTLS/SSL証明書の秘密キーであることに注意してください。
+
 
 秘密鍵だけを含んだファイルを作成してください。
 
-.. code-block:: none
+.. code-block:: openssl
 
    -----BEGIN PRIVATE KEY-----
    your private key
@@ -67,7 +77,7 @@ setconfigコマンドで秘密鍵のファイルへのパスを指定してく�
 
 別のファイルを作成し、あなたの証明書とルートの認証局まで依存する証明書のリストを含めてください。あなたの証明書はリストの最初、ルートの認証局はリスト最後にある必要があります。
 
-.. code-block:: none
+.. code-block:: openssl
 
    -----BEGIN CERTIFICATE-----
    your cert
@@ -90,17 +100,50 @@ setconfigコマンドでssl_chainまでのパスを指定してください。
 リクエストディレクトリを設定する
 -----------------------------
 
-このディレクトリはあなたのWebサーバに設置されなければなりません。（Apacheなど）
+このディレクトリはあなたのWebサーバに設置されなければなりません。（Apache や Nginx 等）
 
 .. code-block:: bash
 
-   electrum setconfig requests_dir /var/www/r/
+   electrum setconfig requests_dir /srv/www/payment/
 
 デフォルトではElectrumは'file://'で始まるローカルのURLを表示します。公開されたURLを表示するためには、url_rewriteを設定する必要があります。例えば、
 
 .. code-block:: bash
 
-   electrum setconfig url_rewrite "['file:///var/www/','https://electrum.org/']"
+   electrum setconfig url_rewrite "[ 'file:///srv/www/', 'https://example.com/' ]"
+
+Webサーバーは、支払要求を処理できるように準備しておく必要があります。
+configuration for Nginx:
+
+.. code-block:: nginx
+
+    location /payment/ {
+        default_type "application/bitcoin-paymentrequest";
+        alias /srv/www/payment/;
+    }
+    
+Or for Apache 2:
+
+.. code-block:: apache
+
+    <Directory /srv/www/payment/requests/>
+        ForceType application/bitcoin-paymentrequest
+    </Directory>
+
+その他のWebサーバーについては、ディレクトリに基づいてデフォルトのMIMEタイプを変更する方法について、マニュアルを参照してください。
+
+Electrum-Merchant をインストールする
+-------------------------
+
+Electrum-Merchant_ をインストールして走らせるプログラム。 デフォルトでは、単純なインタフェースがインストールされます。
+他のインタフェースは準備中であり、将来利用可能になる予定です。
+
+.. code-block:: bash
+
+    pip3 install electrum-merchant
+    python3 -m electrum-merchant
+
+Electrum-Merchant_ を正常に実行するには、前述の手順に従う必要があることに注意してください。
 
 署名された支払いリクエストを作成する
 ---------------------------------
@@ -109,16 +152,16 @@ setconfigコマンドでssl_chainまでのパスを指定してください。
 
    electrum addrequest 3.14 -m "this is a test"
    {
-      "URI": "bitcoin:1MP49h5fbfLXiFpomsXeqJHGHUfNf3mCo4?amount=3.14&r=https://electrum.org/r/7c2888541a", 
-      "address": "1MP49h5fbfLXiFpomsXeqJHGHUfNf3mCo4", 
-      "amount": 314000000, 
-      "amount (BTC)": "3.14", 
-      "exp": 3600, 
-      "id": "7c2888541a", 
-      "index_url": "https://electrum.org/r/index.html?id=7c2888541a", 
-      "memo": "this is a test", 
-      "request_url": "https://electrum.org/r/7c2888541a", 
-      "status": "Pending", 
+      "URI": "bitcoin:1MP49h5fbfLXiFpomsXeqJHGHUfNf3mCo4?amount=3.14&r=https://example.com/payment/7c2888541a",
+      "address": "1MP49h5fbfLXiFpomsXeqJHGHUfNf3mCo4",
+      "amount": 314000000,
+      "amount (BTC)": "3.14",
+      "exp": 3600,
+      "id": "7c2888541a",
+      "index_url": "https://example.com/payment/index.html?id=7c2888541a",
+      "memo": "this is a test",
+      "request_url": "https://example.com/payment/7c2888541a",
+      "status": "Pending",
       "time": 1450175741
    }
 
@@ -143,7 +186,6 @@ index_urlをWebブラウザで開いてみましょう。
 このページには支払いリクエストが載っています。ウォレットでMonaocin: URIを開くか、QRコードをスキャンすることが出来ます。最後の行はリクエストの期限が切れるまでに残された時間を表しています。
 
 .. image:: png/payreq_window.png
-          
 
 既にこのページは支払いを受け取るために使用できます。ただしリクエストが支払われたかどうかは検出しません。そのためにはWebソケットを設定する必要があります。
 
@@ -154,13 +196,13 @@ SimpleWebSocketServerをここから入手してください：
 
 .. code-block:: bash
 
-   git clone https://github.com/ecdsa/simple-websocket-server.git
+    git clone https://github.com/dpallot/simple-websocket-server
 
 設定に``websocket_server`` と ``websocket_port``を指定してください：
 
 .. code-block:: bash
 
-    electrum setconfig websocket_server <FQDN of your server>
+    electrum setconfig websocket_server example.com
 
     electrum setconfig websocket_port 9999
 
@@ -169,10 +211,20 @@ SimpleWebSocketServerをここから入手してください：
 
 .. code-block:: bash
 
-   electrum daemon stop
+    electrum daemon stop
 
-   electrum daemon start
-   
+    electrum daemon start
+
+
+これでページは完全に対話的になり、支払いを受け取るとページが更新されます。
+
+クライアントのファイアウォールで上位のポートがブロックされる可能性があることに注意してください。
+そのため、たとえば追加の外部IPアドレスで標準の ``443`` ポートを使用してプロキシWebソケットの送信を逆にする方が安全です。
+ローカルにインストールされているWebsocketサーバまたはサーバのポートElectrumサーバが、
+カスタマに通知するポートと異なる場合は、次の2つの追加設定パラメータを設定できます。
+
+* websocket_server_announce
+* websocket_port_announce
 
 これでこのページは完全にインタラクティブになり、支払いを受け取ると自らアップデートするようになりました。higher portは一部のクライアントのファイアウォールにブロックされる可能性があるので、たとえば追加のサブドメイン上の標準ポートである ``443`` を使用してWebソケットの転送をリバースプロキシで行う方が安全です。
 
@@ -223,4 +275,3 @@ HTTP Basic認証はリクエストの一部として、暗号化されていな�
 .. code-block:: bash
 
    curl --data-binary '{"id":"curltext","method":"addrequest","params":{"amount":"3.14","memo":"test"}}' http://username:password@127.0.0.1:7777
-
